@@ -21,3 +21,8 @@ def update_person(person, update_person1):
         person[x]= update_person1[x]
 
     return person
+
+
+
+
+argv = ['main.py', 'jamal']
