@@ -599,6 +599,157 @@ def extra_end(word):
 
 
 
-print(extra_end('Hello')) # 'lololo'
-extra_end('ab') # 'ababab'
-extra_end('Hi') # 'HiHiHi'
+# print(extra_end('Hello')) # 'lololo'
+# extra_end('ab') # 'ababab'
+# extra_end('Hi') # 'HiHiHi'
+
+
+def non_start(str1, str2):
+    new_str1 = str1[1:]
+    new_str2 = str2[1:len(str2)]
+    result = new_str1 + new_str2
+
+    return result
+
+
+# print(non_start('Hello', 'There')) # 'ellohere'
+# print(non_start('java', 'code')) # 'avaode'
+# print(non_start('shotl', 'java')) # 'hotlava'
+
+
+animals1 = ['cat', 'dog', 'cow']
+animals2 = ['cat', 'dog', 'cow']
+
+def creatures(list1, list2):
+    
+    for x in list1:
+        if x in list2:
+            continue
+
+        else:
+            return False
+    return True
+        
+
+def creatures2(list1, list2):
+    length = len(list1)
+    x = 0
+    
+    while x < length:
+
+        if list1[x] not in list2:
+            return False
+
+        x = x + 1
+    return True
+
+# print(creatures2(animals1, animals2)) # False
+
+def reverse(word):
+    # c a t
+    # 0 1 2
+    idx = len(word) - 1 # 2 1 0
+
+    result = "" # t
+    while idx >= 0:
+        char = word[idx]
+        result = result + char
+        idx = idx - 1
+
+    return result
+
+def reverse(word):
+
+    # c a t
+    # 0 1 2
+    last_idx = len(word) - 1 # 2 1
+    result = "" 
+    for i in range(len(word)):
+        char = word[last_idx]
+        result = result + char
+
+        last_idx = last_idx -1
+
+    return result
+# print(reverse("hello")) #olleh
+
+
+def count_evens(lst):
+    count = 0
+    for number in lst:
+        if number % 2 == 0:
+            count += 1
+
+    return count
+
+
+# print(count_evens([2, 1, 2, 3, 4])) # 3
+# print(count_evens([2, 2, 0])) # 3
+# print(count_evens([1, 3, 5])) # 0
+
+def count_evens(lst):
+    length = len(lst)
+    count = 0
+    idx = 0
+
+    while idx < length:
+        if lst[idx] % 2 == 0:
+            count += 1
+        idx = idx + 1
+
+    return count
+
+
+# print(count_evens([2, 1, 2, 3, 4])) # 3
+# print(count_evens([2, 2, 0])) # 3
+# print(count_evens([1, 3, 5])) # 0
+
+
+
+def max(list):
+    # result = 0
+    # for x in list:
+    #     if x > result:
+    #         result = x
+    
+    # return result
+    result = 0
+    index = 0
+    length = len(list)
+    
+    while index < length:
+        if list[index] > result:
+            result = list[index]
+        index = index + 1
+    return result
+       
+
+# print(max([5,3,6,8])) # 8
+
+
+
+# x = 'hello'
+# x.upper()
+
+# mod: r, w, wr
+# path: /home/jay/Downloads/week2/
+
+# file = open('/home/jay/tmp/passwords.txt', 'r')
+# content = file.read()
+# file.close()
+
+def delete_user(id):
+    file = open('/home/jay/tmp/passwords.txt', 'r')
+    lines = file.readlines()
+    for line in lines:
+        if line[0] == id:
+            print(line)
+
+    file.close()
+
+delete_user("4")
+
+
+
+# print('file content: ')
+# print(content)
