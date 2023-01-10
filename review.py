@@ -728,6 +728,113 @@ def max(list):
 
 
 
+
+
+def split(text, char):
+    result = []
+    value = ""
+    for letter in text:
+
+        if letter == char:
+            result.append(value)
+            value = ""
+
+        else:
+            value = value + letter
+
+    result.append(value)    
+
+    return result
+
+
+text = '1,Jamal,25160510\n5,jurgen,123456kajsdf\n5,jurgen,123456kajsdf\n'''''''
+
+
+# print(split(text, '\n')) # ['Jamal', 'Al', '25', '160', '5.10']
+
+
+
+
+def add(nums):
+    list = []
+    for x in nums:
+        list.append(x[0] + x[1])
+    return list
+
+
+# [1,2,4,5] => 12
+def my_sum(numbers):
+    sum = 0
+    for num in numbers:
+        sum += num
+    
+    return sum
+
+
+
+def add(nums):
+    list = []
+    for x in nums:
+        result = my_sum(x)
+
+        list.append(result)
+    return list
+
+nums = [ [1, 5], [5, 6, 2, 2],  [2, 9, 1]  ]
+
+# fun = add(nums) # [6, 11, 11])
+# print(fun)
+
+
+
+
+# person = ['Jamal', 'Al', '25', '160', '5.10']
+# 'Jamal,Al,25,160,5.10',
+
+def compress(person):
+    result = ""
+    counter = 0
+    last_el = len(person) - 1 # 5
+    for value in person:
+        if counter == last_el:
+            result = result + value
+        else:
+            result = result + value + ","
+
+        counter += 1
+    
+    return result
+
+# print(compress(person))
+    
+
+
+people = [
+    ['Jamal', 'Al', '25', '160', '5.10'],
+    ['jack', 'mark', '28', '150', '5.7'],
+    ['Jurgen', 'mane', '27', '167', '5.10'],
+]
+
+result = [
+    'Jamal,Al,25,160,5.10',
+    'jack,mark,28,150,5.7',
+    'Jurgen,mane,27,167,5.10'
+]
+
+
+def compress_people(people):
+    output = []
+    for person in people:
+        result = compress(person)
+        output.append(result)
+    
+    return output
+
+
+
+print(compress_people(people))
+
+
 # x = 'hello'
 # x.upper()
 
@@ -747,7 +854,7 @@ def delete_user(id):
 
     file.close()
 
-delete_user("4")
+# delete_user("4")
 
 
 
