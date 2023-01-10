@@ -761,6 +761,8 @@ def add(nums):
         list.append(x[0] + x[1])
     return list
 
+# fun = add(nums) # [6, 11, 11])
+# print(fun)
 
 # [1,2,4,5] => 12
 def my_sum(numbers):
@@ -782,14 +784,11 @@ def add(nums):
 
 nums = [ [1, 5], [5, 6, 2, 2],  [2, 9, 1]  ]
 
-# fun = add(nums) # [6, 11, 11])
+# fun = add(nums) # [6, 15, 12])
 # print(fun)
 
 
 
-
-# person = ['Jamal', 'Al', '25', '160', '5.10']
-# 'Jamal,Al,25,160,5.10',
 
 def compress(person):
     result = ""
@@ -805,21 +804,12 @@ def compress(person):
     
     return result
 
+# person = ['Jamal', 'Al', '25', '160', '5.10']
+# 'Jamal,Al,25,160,5.10',
 # print(compress(person))
     
 
 
-people = [
-    ['Jamal', 'Al', '25', '160', '5.10'],
-    ['jack', 'mark', '28', '150', '5.7'],
-    ['Jurgen', 'mane', '27', '167', '5.10'],
-]
-
-result = [
-    'Jamal,Al,25,160,5.10',
-    'jack,mark,28,150,5.7',
-    'Jurgen,mane,27,167,5.10'
-]
 
 
 def compress_people(people):
@@ -832,6 +822,17 @@ def compress_people(people):
 
 
 
+people = [
+    ['Jamal', 'Al', '25', '160', '5.10'],
+    ['jack', 'mark', '28', '150', '5.7'],
+    ['Jurgen', 'mane', '27', '167', '5.10'],
+]
+
+# result = [
+#     'Jamal,Al,25,160,5.10',
+#     'jack,mark,28,150,5.7',
+#     'Jurgen,mane,27,167,5.10'
+# ]
 print(compress_people(people))
 
 
