@@ -98,4 +98,3 @@ while True:
 
   if value == "4":
     break
-  dont forget to 
