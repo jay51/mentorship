@@ -1,0 +1,40 @@
+
+what are important things to work on and better understand if i want to have a career in programming?
+ 
+It depends on the area of programming. However a basic ground I think every developer should learn is data structures, algorithms, http Protocol, and a solid understanding of at least one programming language.
+ 
+ 
+Data Structures:
+- Array / List
+- Hashmap / Object
+- Linked List & double linked List
+- Trees
+- Graphs
+ 
+Learn what they are, how to use them, what's their Algorithmic complexity.
+ 
+ 
+Algorithms:
+- few sorting Algorithms (Insertion Sort, Quicksort)
+- search Algorithms (Breadth First Search, Depth First Search)
+- Binary Search
+ 
+Learn what they are, how to use them, what's their Algorithmic complexity.
+ 
+
+Http:
+- Sockets
+- APIs
+- Authentication / Authorization
+ 
+Learn what they are, how to use them.
+if your're doing front-end then learn about design, css, a framework like React or Vue, REST http end points or APIs.
+
+if you're doing back-end there's much more to learn for example database, http framework, servers, Load balancing, proxy, micro services ...ect
+
+you don't need to worry yourself with all this now, just pick one area and go deep, when you feel like you've learned enough switch to something else.
+
+Platforms:
+Blogs
+https://leetcode.com/
+https://www.pramp.com/

@@ -111,11 +111,6 @@ def extract_url(url):
 
 
 
-
-
-
-
-
-url = "https://facebook.com/search?q=cats&tbm=isch"
-print(extract_url(url)) # ['https', 'www.google', 'com']
+# url = "https://facebook.com/search?q=cats&tbm=isch"
+# print(extract_url(url)) # ['https', 'www.google', 'com']
 

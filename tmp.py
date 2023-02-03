@@ -88,7 +88,7 @@ def make_http_url(prot, domain, ext):
     return variable
 
 
-print(make_http_url('https', 'google', 'edu')) # http://google.edu
+# print(make_http_url('https', 'google', 'edu')) # http://google.edu
 
 
 
@@ -99,6 +99,21 @@ def extract_url(url):
 
 
 
-url = "https://www.google.com/search?q=cats&tbm=isch"
-extract_url(url) # ['https', 'www.google', 'com']
+# url = "https://www.google.com/search?q=cats&tbm=isch"
+# extract_url(url) # ['https', 'www.google', 'com']
 
+
+numbers = [3,1,2]
+
+def sort(nums):
+    new_lst = []
+    for _ in range(len(nums)):
+        s = min(nums)
+        new_lst.append(s)
+        nums.remove(s)
+    
+
+    return new_lst
+
+
+print(sort(numbers))
