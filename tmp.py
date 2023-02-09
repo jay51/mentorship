@@ -256,4 +256,156 @@ m1.mult(4)
 m2.add(3)
 m2.mult(6)
 
-print(m1.total, m2.total)
+class Person():
+    plant = 'Earth'
+
+    def __init__(self, name, age, skills):
+        self.skills = skills
+        self.name = name
+        self.age = age
+
+    def set_skill(self, skill):
+        self.skills.append(skill)
+
+
+p1 = Person('jack', 20, [])
+p2 = Person('nick', 30, ['driving'])
+
+p1.set_skill("running")
+p1.set_skill("playing chess")
+
+p2.set_skill("driving")
+
+# print(p1.name)
+# print(p1.age)
+# print(p1.skills)
+
+# print(p2.name)
+# print(p2.age)
+# print(p2.skills)
+
+
+
+
+
+class Queue():
+    
+    def __init__(self):
+        self._queue = []
+
+    def enqueue(self, item):
+        self._queue.append(item)
+
+
+    def peek(self):
+        if len(self._queue) == 0:
+            return None
+
+        return self._queue[0]
+
+    def dequeue(self):
+        if len(self._queue) == 0:
+            return None
+
+        return self._queue.pop(0)
+
+
+# y = Queue()
+# x = Queue()
+
+# y.enqueue(1)
+# y.enqueue(2)
+
+# x.enqueue('first element')
+# x.enqueue('second element')
+
+# print(y.peek())
+# print(x.peek())
+
+
+# y.dequeue()
+# y.dequeue()
+
+# x.dequeue()
+
+
+# print(y.peek())
+# print(x.peek())
+
+
+
+
+class Enemy():
+
+    kills = []
+
+    def __init__(self, health, name):
+        self.health = health
+        self.name = name
+
+
+    def print_info(self):
+        print(self.health)
+        print(self.name)
+        print(self.kills)
+
+    def kill(self, name):
+        self.kills = []
+        self.kill.append(name)
+
+
+enemy_1 = Enemy(100, "John")
+
+enemy_2 = Enemy(80, "Jack")
+
+# enemy_1.print_info()
+# enemy_2.print_info()
+
+# enemy_1.name = "Brown"
+
+# enemy_1.print_info()
+# enemy_2.print_info()
+
+# enemy_1.kill("Jamal")
+# enemy_2.kill("Jurgen")
+
+
+
+
+# push 1
+# push 2
+# push 3
+
+# peek 3
+# peek 3
+# peek 3
+
+# pop 3
+# pop 2
+# pop 1
+
+class Stack():
+   
+    def __init__(self, result):
+        self.result = result
+
+    def push(self, item):
+        self.result.append(item)
+
+    def peek(self):
+        length = len(self.result)
+        return self.result[length -1]
+
+    def pop(self):
+        return self.result.pop()
+
+
+stack1 = Stack([1,3,5])
+stack1 = Stack([])
+
+stack1.push(5)
+stack1.push(6)
+print(stack1.peek())
+stack1.pop()
+print(stack1.peek())
+
