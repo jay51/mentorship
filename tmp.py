@@ -400,12 +400,199 @@ class Stack():
         return self.result.pop()
 
 
-stack1 = Stack([1,3,5])
-stack1 = Stack([])
+# stack1 = Stack([1,3,5])
+# stack1 = Stack([])
 
-stack1.push(5)
-stack1.push(6)
-print(stack1.peek())
-stack1.pop()
-print(stack1.peek())
+# stack1.push(5)
+# stack1.push(6)
+# print(stack1.peek())
+# stack1.pop()
+# print(stack1.peek())
 
+
+class Person():
+
+    def __init__(self, name, age, height, wight):
+        self.name = name
+        self.age = age
+        self.height = height
+        self.wight = wight
+
+
+    def print_hello(self):
+        print('hello ', self.name)
+
+
+# p1 = Person('jack', 23, 6.2, 162)
+
+# p1.print_hello()
+
+# init_person(p1, 'jack', 23, 6.2, 162)
+
+
+
+# p1.name = 'jack'
+# p1.age = 23
+# p1.height = 6.2
+# p1.wight = 162
+
+# p2 = Person('nick', 27, 5.2, 162)
+# init_person(p2, 'nick', 27, 5.2, 162)
+# p2.name = 'nick'
+# p2.age = 23
+# p2.height = 6.2
+# p2.wight = 162
+# p2.print_hello()
+
+# print(p1.age)
+
+
+
+
+
+
+# API interface
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def show_point(self):
+        x = self.x
+        y = self.y
+        print(f"x={x}, y={y}")
+
+    def set_point(self,new_x, new_y):
+        self.x = new_x
+        self.y = new_y
+
+    def add_point(self, first_point, second_point):
+        self.x += first_point
+        self.y += second_point
+
+# p1 = Point(25, 27)
+
+# p1.show_point() # print x: 25, y: 27
+
+# p1.set_point(42, 45)
+
+# p1.add_point(3, 4) # x=45, 49
+
+# p1.show_point() # print x: 25, y: 27
+
+
+
+class Cache:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.list = []
+
+    
+    def add(self, elm):
+        item = {'acess': 1, 'val': elm}
+
+        if self.capacity == len(self.list):
+            smallest = self.list[0]
+
+            for it in self.list:
+                if it['acess'] < smallest['acess']:
+                    smallest = it
+            
+            self.list.remove(smallest)
+         
+        self.list.append(item)
+
+
+    def acess(self, item):
+        
+        for it in self.list:
+            if it['val'] == item:
+                it['acess'] += 1
+
+
+
+    def show(self):
+        print(self.list)
+
+    
+
+
+
+
+# c1 = Cache(5)
+
+# c1.add(6)
+# c1.add(3)
+# c1.add(9)
+# c1.add(5)
+# c1.add(0)
+
+
+# c1.acess(6)
+# c1.acess(3)
+# c1.acess(9)
+
+# c1.add(7) # 5
+# c1.add(1) # 0
+
+
+
+# c1.show()
+# 3
+# 9
+# ...
+
+
+# [1,2,3,4]
+
+# Node
+#     - Value 
+#     - next 
+
+# Node -> Node -> Node -> Node
+#  1        2       3       4
+
+
+
+class Node():
+    def __init__(self, value) -> None:
+        self. value = value
+        self.next = None
+
+
+parent = Node(1)
+
+def add_node(parent, val):
+
+    cur = parent
+    while cur.next != None:
+        cur = cur.next
+
+    cur.next = Node(val)
+
+
+
+def show_nodes(parent):
+
+    cur = parent
+    while cur.next != None:
+        print(cur.value)
+        cur = cur.next
+
+    print(cur.value)
+
+
+add_node(parent, 5)
+add_node(parent, 10)
+add_node(parent, 20)
+show_nodes(parent)
+    
+# n2 = Node(2)
+# n3 = Node(4)
+
+# n1.next = n2
+# n2.next = n3
+
+
+# print(n1.next.next.value)
