@@ -546,6 +546,8 @@ class Cache:
 
 # [1,2,3,4]
 
+names = ['hello', 'jack']
+
 # Node
 #     - Value 
 #     - next 
@@ -561,32 +563,38 @@ class Node():
         self.next = None
 
 
-parent = Node(1)
+class LinkedList():
+    def __init__(self, val):
+        self.head = Node(val)
 
-def add_node(parent, val):
+    def add_node(self, val):
+        parent = self.head
+        while parent.next != None:
+            parent = parent.next
 
-    cur = parent
-    while cur.next != None:
-        cur = cur.next
-
-    cur.next = Node(val)
-
-
-
-def show_nodes(parent):
-
-    cur = parent
-    while cur.next != None:
-        print(cur.value)
-        cur = cur.next
-
-    print(cur.value)
+        parent.next = Node(val)
 
 
-add_node(parent, 5)
-add_node(parent, 10)
-add_node(parent, 20)
-show_nodes(parent)
+    def show_nodes(self):
+        parent = self.head
+        while parent.next != None:
+            print(parent.value)
+            parent = parent.next
+
+        print(parent.value)
+
+
+# lklist = LinkedList('A')
+# lklist.add_node('B')
+# lklist.add_node('C')
+# lklist.add_node('D')
+# lklist.add_node('F')
+
+
+# lklist.show_nodes()
+# add_node(parent, 10)
+# add_node(parent, 20)
+# show_nodes(parent)
     
 # n2 = Node(2)
 # n3 = Node(4)
@@ -596,3 +604,57 @@ show_nodes(parent)
 
 
 # print(n1.next.next.value)
+
+
+
+
+#replace("hello={}", 'jack') # 'hello jack'
+
+def replace(phrase, word):
+    defined = phrase.split("{}")
+    defined[1] = word
+    new_phrase = defined[0] + defined[1]
+
+    return new_phrase
+
+#print(replace("hello= {}", 'jack'))
+
+def replace2(phrase, lst):
+    splited = phrase.split("{}")
+    print(splited)
+    result = ''
+    for x in range(len(lst)):
+
+        result += splited[x] + lst[x]
+
+    # splited[1] = lst[0]
+    # splited[2] = lst[1]
+    # new_phrase = splited[0] + splited[1] + " " + splited[2]
+    return result
+
+
+
+def replace2(phrase, lst):
+    result = ''
+    index = 0
+    for x in range(len(phrase)):
+
+        if '{' == phrase[x] and '}' == phrase[x + 1]:
+            result += lst[index]
+            index += 1
+
+        elif "}" == phrase[x]:
+            continue
+
+        else:
+            result += phrase[x]
+
+    return result
+
+
+
+    return result
+print(replace2("hello= {}, {} {}", ['jack', 'john', 'john']))
+
+
+
