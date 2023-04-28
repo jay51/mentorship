@@ -427,10 +427,13 @@ def p16(l=8):
 
 #print(p16(10)) # 12345678
 #print(p16(16)) # kdfjk@75
-def format_word(word, letters):
+
+
+def format_word(word, revelied_letters):
+
     result = ''
     for char in word:
-        if char in letters:
+        if char in revelied_letters:
             result += char + " "
         else:
             result += "_ "
@@ -440,25 +443,27 @@ def format_word(word, letters):
 # print_word("hello", ["l", 'o'])
 
 # hello
+
 # [l,o]
 # _ _ l l 0
 
 
 
-list = ["running", "jumping", "swiming"]
 def p17(guesses):
     import random
-    computer_choice = random.choice(list)
-    length = len(computer_choice)
-    #print("_" * length)
+
+    list = ["running", "jumping", "swiming"]
+    random_word = random.choice(list)
+
     revelied = []
     while guesses:
         
-        print(format_word(computer_choice, revelied), end='')
+        print(format_word(random_word, revelied), end='')
 
-        user_choice = input("Guess a letter:")
-        if user_choice in computer_choice:
-            revelied.append(user_choice)
+        letter = input("Guess a letter:")
+
+        if letter in random_word:
+            revelied.append(letter)
         else:
             print("Try again")
         
@@ -466,7 +471,7 @@ def p17(guesses):
 
         guesses -= 1
 
-print(p17(7))
+# print(p17(7))
 
 
 # hello
@@ -479,3 +484,305 @@ print(p17(7))
 
 # : o
 # _ _ l l o
+
+
+
+
+def p18(x, y):
+    box = '{ }'
+
+    for j in range(y):
+        print()
+        for i in range(x):
+            print(box, end="")
+
+    print()
+
+    #  --- --- --- 
+    # |   |   |   | 
+    #  --- --- ---  
+
+    # print(box * y)
+
+# p18(6, 6)
+
+def p19():
+    import random
+    
+    heigher = 10
+    lower = 1
+    computer_choice = 1
+    while True:
+        # computer_choice = random.randrange(lower, heigher)
+        print(f'is your number {computer_choice}')
+        # + means the number picked by the computer is heigher than the number in my head
+        # - means the number picked by the computer is lower than the number in my head
+
+        answer = input("YES/+/-: ")
+
+
+
+        if answer == 'yes':
+            break
+        if answer == '+':
+            heigher = computer_choice 
+
+        if answer == '-':
+            lower = computer_choice
+
+        computer_choice +=1 
+# 9
+
+# 1 2 3 4 5 6 7 8 9 10
+
+# p19()
+
+
+def number_length(num):
+    result = 0
+    while num > 0:
+        num = num // 10
+        result += 1
+
+    
+    return result
+
+
+
+# print(number_length(127))
+
+
+
+def list_of_multiples(num, length):
+    lst = []
+    for x in range(1 ,length + 1):
+        number = num * x
+        lst.append(number)
+
+    return lst
+
+
+
+# print(list_of_multiples(7, 5)) # ➞ [7, 14, 21, 28, 35]
+
+# print(list_of_multiples(12, 10))# ➞ [12, 24, 36, 48, 60, 72, 84, 96, 108, 120]
+
+
+
+def to_dict(chars):
+
+    result = {}
+    for char in chars:
+        # result[char] = ord(char)
+        result.setdefault(char, ord(char))
+        
+    return result
+
+
+
+
+# {
+#     'a': 97,
+#     'b': 98,
+#     'c': 99
+# }
+
+# chars = to_dict(["a", "b", "c"])
+
+# print(chars['b'])
+# print(chars.get('b'))
+
+def getLength(nums):
+    result = 0
+    stack = []
+    target = nums
+    length = len(nums) -1
+    i = 0
+    while True:
+        if i > length:
+            # print(f'max  i:{i} length: {length}')
+            if len(stack) == 0:
+                break
+
+            # print(f'restore i: {i} el:{target[i]}')
+            node = stack.pop()
+            target = node[0]
+            length = node[1]
+            i = node[2]
+            # print(f'restore i: {i} el:{target[i]}')
+            
+
+        elif type(target[i]) == int:
+            result += 1
+            # print(f'inside int condition i: {i} el:{target[i]}')
+
+        elif type(target[i]) == list:
+            # print(f'inside list condition {target[i]}')
+            node = [target, length, i+1]
+            stack.append(node)
+
+            target = target[i]
+            length = len(target) - 1
+            i = -1
+
+        i += 1
+        
+    return result
+
+
+
+
+# result = 0
+def count_elements(nums):
+    
+    result = 0
+    # global result
+    for elment in nums:
+        if type(elment) == list:
+            result += count_elements(elment)
+
+        else:
+            result += 1
+    
+
+    return result
+
+
+
+        
+
+# print(count_elements([1,2,3]))
+# print(count_elements([1,2,[1,2], 3]))
+# x = [1,2,3, [1,2], [1,2]]
+# print(count_elements(x))
+# [1,2,3]
+# [1,2,[1,2], 3]
+
+
+
+
+
+
+# print(getLength([1, [2, 3]]))# 3
+# print(getLength([1, [2, [3, 4]]])) # 4
+# getLength([1, [2, [3, [4, [5, 6]]]]]) # 6
+# getLength([1, [2], 1, [2], 1]) # 5
+
+
+
+def reverse_words(word):
+    word = list(word)
+
+    for x in range(len(word)//2):
+        idx_of_last = len(word) - 1 - x
+        tmp = word[idx_of_last]
+
+        word[idx_of_last] = word[x]
+        word[x] = tmp
+
+
+    return word
+# def reverse_words(word):
+#     reverse = ""
+#     for x in word:
+#         reverse = x + reverse
+    
+#     return reverse
+
+
+
+# O(n) where n is the length of th word
+
+# O(1)
+# O(logN)
+# O(n)2
+
+# eulb
+
+# print(reverse_words("blue")) # eulb
+
+
+
+def get_indices(elments, item):
+    result = []
+    for x in range(len(elments)):
+        if elments[x] == item:
+            result.append(x)
+
+    return result
+
+
+# time complexity O(N) where n is the length of the list
+# space ..        O(N) where n is the length of the list
+
+# print(get_indices(["a", "a", "a", "a", "a", "a", 'a'], "a"))
+
+encoding = {
+    "h": '!',
+    'e': '@',
+    'l': '#',
+    'o': '$',
+    'w': '%',
+    'r': '^',
+    "d": '&'
+}
+
+
+'hello world' 'irfrrmrrr'
+'hel'
+
+# ord
+# chr
+
+def enc(data):
+    import random
+    i = 1
+    word = ''
+    for x in data:
+        pos = ord(x) + 1
+        word = word + chr(pos)
+
+    #    A * 2 AA 
+        for _ in range(i):
+            word += chr(random.randrange(33, 127))
+
+        i += 1
+
+
+    return word
+    
+print(enc('hell oworld')) # !@##$%$^#&
+
+
+
+
+def enc(data):
+    pass
+
+# print(dec('i:fq$m"%=m3l./!D2OYQpa'0-?NxgU*YDp+p@pYu..$Us~mVlJ}cx|mFqsRbfzU**eA4D\7vlMt.h')) # hell oworld
+
+
+
+
+
+# def enc(data):
+#     word = ''
+#     for x in data:
+#         if encoding.get(x) != None:
+#             word = word + encoding.get(x)
+
+
+#     return word
+
+
+
+# def dec(data):#!@##$%$^#&
+#     for key in encoding:
+#         if encoding[key] in data:
+#             data = data.replace(encoding[key], key)
+
+#     return data
+
+
+# print(enc('helloworld')) # !@##$%$^#&
+# print(dec('!@##$%$^#&')) # helloworld
