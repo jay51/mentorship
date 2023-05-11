@@ -654,7 +654,21 @@ def replace2(phrase, lst):
 
 
     return result
-print(replace2("hello= {}, {} {}", ['jack', 'john', 'john']))
+# print(replace2("hello= {}, {} {}", ['jack', 'john', 'john']))
 
 
 
+
+
+def find_nth_largest(numbers, nth):
+
+    numbers = sorted(numbers)
+    idx = len(numbers) - nth
+
+    return numbers[idx]
+
+
+
+arr = [3,4,6,8,7]
+result = find_nth_largest(arr, 2)
+print(result)

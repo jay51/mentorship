@@ -728,8 +728,8 @@ encoding = {
 }
 
 
-'hello world' 'irfrrmrrr'
-'hel'
+# 'hello world' 'irfrrmrrr'
+# 'hel'
 
 # ord
 # chr
@@ -745,22 +745,48 @@ def enc(data):
     #    A * 2 AA 
         for _ in range(i):
             word += chr(random.randrange(33, 127))
+            # word += 'A'
 
         i += 1
 
 
     return word
     
-print(enc('hell oworld')) # !@##$%$^#&
+# print(enc('hello world')) # !@##$%$^#&
 
 
 
 
-def enc(data):
-    pass
+def dec(data):
+    i = 0
+    inc = 2
+    word = ''
 
-# print(dec('i:fq$m"%=m3l./!D2OYQpa'0-?NxgU*YDp+p@pYu..$Us~mVlJ}cx|mFqsRbfzU**eA4D\7vlMt.h')) # hell oworld
+    for x in range(len(data)):
+        letter = chr(ord(data[i]) - 1)
+        word = word + letter
 
+        i += inc
+        inc += 1
+
+        if i > len(data):
+            break
+    
+
+    return word
+
+
+
+
+
+
+# data = "i:fq$m\"%=m3l./!D2OYQpa'0-?NxgU*YDp+p@pYu..$Us~mVlJ}cx|mFqsRbfzU**eA4D\7vlMt.h"
+# print(chr(ord(data[0]) -1 ))
+# print(chr(ord(data[2]) -1 ))
+# print(chr(ord(data[5]) -1 ))
+
+
+# print(dec("i:fq$m\"%=m3l./!D2OYQpa'0-?NxgU*YDp+p@pYu..$Us~mVlJ}cx|mFqsRbfzU**eA4D\7vlMt.h"))
 
 
 
@@ -786,3 +812,51 @@ def enc(data):
 
 # print(enc('helloworld')) # !@##$%$^#&
 # print(dec('!@##$%$^#&')) # helloworld
+
+
+def pprint(arr, size):
+    for x in range(size):
+        x = size * x
+        # print(f"{arr[x]},  {arr[x+1]}, {arr[x+2]}, {arr[x+3]}")
+        for y in range(size):
+            print(f"{arr[x + y]}, ", end='')
+        print()
+        
+# 3 * 3
+# grid = [
+#     0,0,0,
+#     0,0,0,
+#     0,0,0
+# ]
+
+# 4 * 4
+# grid = [
+#     0,0,0,0,
+#     0,0,0,0,
+#     0,0,0,0,
+#     0,0,0,0
+# ]
+
+# 3 * 4 = rows * cols
+grid = [
+    0,0,0,0,
+    0,0,0,0,
+    0,0,0,0,
+]
+
+def set_pos(grid, size, row, col, val):
+    idx = (row -1) * size + col -1
+
+    grid[idx] = val
+
+
+
+print('--------------------------------')
+pprint(grid, 4)
+print('--------------------------------')
+
+set_pos(grid, 4, 3, 1, 7)
+
+print('--------------------------------')
+pprint(grid, 4)
+print('--------------------------------')
