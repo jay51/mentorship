@@ -14,20 +14,25 @@ conn = psycopg2.connect(
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
-# name = 'adaya'
-# age = 23
-# query = f"INSERT INTO customer(name, age) VALUES('{name}', {age})"
-# print(query)
+name = 'jurgen'
+age = 25
+query = f"INSERT INTO customer(name, age) VALUES('{name}', {age})"
+print(query)
 
 # cur.execute(query)
 # conn.commit()
 
 
 # Execute a query
-# cur.execute("SELECT * FROM postgres")
-cur.execute("SELECT datname FROM pg_database")
+cur.execute("SELECT * FROM dogs")
+# cur.execute("SELECT datname FROM pg_database")
 
 # Retrieve query results
 records = cur.fetchall()
+# print(records[0][1], records[1])
+
+
+
+
 for row in records:
     print(row)

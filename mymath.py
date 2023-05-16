@@ -814,11 +814,11 @@ def dec(data):
 # print(dec('!@##$%$^#&')) # helloworld
 
 
-def pprint(arr, size):
-    for x in range(size):
-        x = size * x
+def pprint(arr, v_size, h_size):
+    for x in range(v_size):
+        x = h_size * x
         # print(f"{arr[x]},  {arr[x+1]}, {arr[x+2]}, {arr[x+3]}")
-        for y in range(size):
+        for y in range(h_size):
             print(f"{arr[x + y]}, ", end='')
         print()
         
@@ -837,26 +837,105 @@ def pprint(arr, size):
 #     0,0,0,0
 # ]
 
-# 3 * 4 = rows * cols
-grid = [
-    0,0,0,0,
-    0,0,0,0,
-    0,0,0,0,
-]
 
-def set_pos(grid, size, row, col, val):
-    idx = (row -1) * size + col -1
+# def set_pos(grid, size, row, col, val):
+#     idx = (row -1) * size + col -1
+
+#     grid[idx] = val
+
+
+# print('--------------------------------')
+# pprint(grid, 4)
+# print('--------------------------------')
+
+# set_pos(grid, 4, 3, 1, 7)
+
+# print('--------------------------------')
+# pprint(grid, 4)
+# print('--------------------------------')
+
+
+
+
+
+# 3 * 4 = rows * cols
+# grid = [
+#     0,0,0,0,
+#     0,0,0,0,
+#     0,0,0,0,
+# ]
+
+
+
+def set_pos(grid, h_size, row, col, val):
+    idx = (row -1) * h_size + col -1
 
     grid[idx] = val
 
 
 
-print('--------------------------------')
-pprint(grid, 4)
-print('--------------------------------')
 
-set_pos(grid, 4, 3, 1, 7)
 
-print('--------------------------------')
-pprint(grid, 4)
-print('--------------------------------')
+# print('--------------------------------')
+# pprint(grid, 3, 4)
+# print('--------------------------------')
+
+# set_pos(grid=grid, h_size=4, row=2, col=2, val=7)
+# set_pos(grid=grid, h_size=4, row=2, col=1, val=7)
+# set_pos(grid=grid, h_size=4, row=1, col=3, val=7)
+# set_pos(grid=grid, h_size=4, row=3, col=4, val=7)
+
+# print('--------------------------------')
+# pprint(grid, 3, 4)
+# print('--------------------------------')
+
+
+
+
+
+
+grid = [
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0]
+]
+
+
+def print_grid(grid):
+    for row in grid:
+        print(row)
+
+
+
+
+
+def set_pos(grid, row, col, val):
+    grid[row-1][col-1] = val
+
+
+
+# print_grid(grid)
+
+# print('--------------------------------')
+# set_pos(grid=grid, row=2, col=2, val=7)
+
+# print_grid(grid)
+
+
+
+
+
+def reverse_count(x):
+    result = []
+    max = x
+    for number in range(x):
+        result.append(max)
+        max -= 1
+
+
+    return result
+
+
+
+print(reverse_count(10)) # [10, 9, 8, 7,6,...]
+

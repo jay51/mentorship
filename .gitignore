@@ -1,5 +1,7 @@
 __*
+venv*
 env*
 psql_backup
 example.sql
+config.py
 
