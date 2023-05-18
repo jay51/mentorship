@@ -937,5 +937,84 @@ def reverse_count(x):
 
 
 
-print(reverse_count(10)) # [10, 9, 8, 7,6,...]
+# print(reverse_count(10)) # [10, 9, 8, 7,6,...]
 
+
+grid = [
+    [0,7,0,0],
+    [0,0,0,0],
+    [0,0,0,0]
+]
+
+# grid = [
+#     [0,0,0,0],
+#     [0,0,7,0],
+#     [0,0,0,0]
+# ]
+
+
+
+
+def move_char(grid, row, col, row2, col2):
+    # copy = grid[row-1][col-1]
+
+    # grid[row2-1][col2-1] = copy
+
+    # grid[row-1][col-1] = 0
+
+
+
+    result = grid[row-1][col-1]
+    grid[row-1][col-1] = 0
+    grid[row2-1][col2-1] = result
+    return grid
+
+
+# print_grid(move_char(grid, 1, 2, 2, 3))
+
+
+
+grid = [
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+]
+# grid = [
+#     [0,7,0,7],
+#     [0,0,7,0],
+#     [0,7,0,7]
+# ]
+
+# grid[row-1][col-1] 
+
+# grid[row][col]
+# grid[row][col - 2]
+
+
+
+def draw_x(grid, row, col):
+    
+    n_rows = len(grid) - 1
+    n_cols = len(grid[0]) - 1
+
+    if row-1 == 0 or row >= n_rows:
+        return grid
+
+    if col-1 == 0 or col >= n_cols:
+        return grid
+
+
+    grid[row-1][col-1] = 7 # middle
+    grid[row][col-2] = 7 # down and left
+    grid[row][col] = 7 # down and right
+    grid[row-2][col] = 7 # up and right
+    grid[row-2][col-2] = 7 # up and left
+    return grid
+
+result = draw_x(grid, 1, 11)
+print_grid(result)

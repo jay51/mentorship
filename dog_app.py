@@ -14,15 +14,27 @@ conn = psycopg2.connect(
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
+username = input("username: ")
+password = input("password: ")
+
+login_query = f"select * from owners where name='{username}' and password='{password}'"
+cur.execute(login_query)
+
+user = cur.fetchone()
+print(user)
+run = True
+
+if user is None:
+    print(f"invalid username or password")
+    run = False
 
 
-
-while True:
+while run:
     print(
         """
         1) Search for Dog by name
         2) Insert a new dog
-        3) Search for Dogs by owner
+        3) Search for my Dogs
 
         type -1 to exit
         
@@ -45,14 +57,17 @@ while True:
         age = input("age: ")
         characteristic = input("What characteristics: ")
         status= input("status: ")
-        query = f"INSERT INTO dogs(name, breed, gender, age, characteristic, status) VALUES('{name}', '{breed}', '{gender}', {age}, '{characteristic}', '{status}')"
+        query = f"""
+        INSERT INTO dogs(name, breed, gender, age, characteristic, status, owner_id)
+        VALUES('{name}', '{breed}', '{gender}', {age}, '{characteristic}', '{status}', {user[0]})
+        """
         print(query)
         cur.execute(query)
         conn.commit()
     
 
     if answer == "3":
-        owner_id = input("owner id?: ")
+        owner_id = user[0]
         query = f"SELECT * FROM dogs WHERE owner_id = {owner_id}"
         cur.execute(query)
         records = cur.fetchall()

@@ -14,17 +14,17 @@ conn = psycopg2.connect(
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
-name = 'jurgen'
-age = 25
-query = f"INSERT INTO customer(name, age) VALUES('{name}', {age})"
-print(query)
+# name = 'jurgen'
+# age = 25
+# query = f"INSERT INTO customer(name, age) VALUES('{name}', {age})"
+# print(query)
 
 # cur.execute(query)
 # conn.commit()
 
 
 # Execute a query
-cur.execute("SELECT * FROM dogs")
+cur.execute("SELECT * FROM dogs where name ='lucy' ")
 # cur.execute("SELECT datname FROM pg_database")
 
 # Retrieve query results
@@ -33,6 +33,7 @@ records = cur.fetchall()
 
 
 
+print(records)
 
 for row in records:
     print(row)
