@@ -14,15 +14,36 @@ conn = psycopg2.connect(
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
-username = input("username: ")
-password = input("password: ")
+def login(username, password):
+    login_query = f"select * from owners where name='{username}' and password='{password}'"
+    cur.execute(login_query)
 
-login_query = f"select * from owners where name='{username}' and password='{password}'"
-cur.execute(login_query)
+    user = cur.fetchone()
+    return user
 
-user = cur.fetchone()
-print(user)
+
+user = None
 run = True
+
+asking = input("Sign up / Log-in 1 or 2:  ")
+
+if asking != '1' and asking != '2':
+    print("invalid option")
+    exit()
+
+username = input("USERNAME: ")
+password = input("PASSWORD: ")
+
+
+if asking == "1":
+    query = f"INSERT INTO owners (name, password) VALUES ('{username}', '{password}')"
+    cur.execute(query)
+    conn.commit()
+    user = login(username, password)
+
+elif asking == '2':
+    user = login(username, password)
+
 
 if user is None:
     print(f"invalid username or password")
@@ -35,6 +56,7 @@ while run:
         1) Search for Dog by name
         2) Insert a new dog
         3) Search for my Dogs
+        4) Delete Dog by id
 
         type -1 to exit
         
@@ -73,6 +95,13 @@ while run:
         records = cur.fetchall()
         for dog in records:
             print(dog)
+
+    if answer == "4":
+        id = input("What is your dogs id?")
+        query = f"Delete From dogs WHERE id = {id}"
+        cur.execute(query)
+        conn.commit()
+        print("Your dog has successfully been deleted")
 
     
     if answer == '-1':

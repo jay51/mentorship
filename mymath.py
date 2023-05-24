@@ -1016,5 +1016,67 @@ def draw_x(grid, row, col):
     grid[row-2][col-2] = 7 # up and left
     return grid
 
-result = draw_x(grid, 1, 11)
-print_grid(result)
+# result = draw_x(grid, 2, 4)
+# print_grid(result)
+grid = [
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0],
+]
+
+
+
+def draw_hz_line(grid, x, y, x2, y2, val):
+    # x -= 1
+    # y -= 1
+
+    row = grid[x-1]
+    for i in range(y-1, y2):
+        row[i] = val
+
+    return grid
+
+# result = draw_hz_line(grid, 5, 3, 5, 7, 1)
+# print_grid(result)
+
+
+def draw_vz_line(grid, x, y, x2, y2, val):
+    
+    for i in range(x-1, x2):
+        grid[i][y-1] = val
+
+    return grid
+
+
+# result = draw_vz_line(grid, 2, 5, 5, 5, 1)
+# print_grid(result)
+
+
+
+def draw_line(grid, x, y, x2, y2, val):
+    
+    if y != y2:
+        col = x
+        for i in range(y -1 , y2):
+            grid[i][col] = val
+            if x != x2:
+                col += 1
+    else:
+        for i in range(x -1 , x2):
+            grid[y][i] = val
+
+
+
+    return grid
+
+
+# second col in row 3 to 4th col in row 5
+# result = draw_line(grid, 1, 2,        4, 5, 1)
+# result = draw_line(grid, 1, 2,        1, 5, 1)
+# result = draw_line(grid, 1, 2,        4, 2, 1)
+# print_grid(result)
