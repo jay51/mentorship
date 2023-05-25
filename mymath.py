@@ -1080,3 +1080,127 @@ def draw_line(grid, x, y, x2, y2, val):
 # result = draw_line(grid, 1, 2,        1, 5, 1)
 # result = draw_line(grid, 1, 2,        4, 2, 1)
 # print_grid(result)
+
+
+
+
+
+
+json = {
+    'men': [
+        {
+            'name': 'jack',
+            'password': '12345'
+        },
+        {
+            'name': 'nick',
+            'password': '46999'
+        },
+        {
+            'name': 'mike',
+            'password': '11111'
+        },
+        {
+            'name': 'mark',
+            'password': '00000'
+        },
+
+    ],
+    'women': [
+        {
+            'name': 'lucy',
+            'password': '12345'
+        },
+        {
+            'name': 'sara',
+            'password': '46999'
+        },
+        {
+            'name': 'judy',
+            'password': '11111'
+        },
+        {
+            'name': 'adaya',
+            'password': '00000'
+        }
+    ]
+}
+
+
+def get_person(json, key, idx):
+    result = json[key][idx -1]
+
+
+    return result
+
+
+
+# print(get_person(json, 'women', 1))
+
+def group_teams(json, team1, team2):
+    result_boys = json[team1]
+    result_girls = json[team2]
+    length = len(result_girls)
+    
+    result = []
+    for x in range(length):
+        result.append( [result_boys[x], result_girls[x]] )
+        # tmp = []
+        # tmp.append(result_boys[x])
+        # tmp.append(result_girls[x])
+        # result.append(tmp)
+        
+
+    return result
+
+
+
+
+# print(group_teams(json, 'men', 'women')) # 
+
+
+result = [ 
+    [
+        { 'name': 'jack', 'password': '12345' },
+        { 'name': 'lucy', 'password': '12345' }
+    ],
+
+    [
+        { 'name': 'jack', 'password': '12345' },
+        { 'name': 'lucy', 'password': '12345' }
+    ],
+
+    [
+        { 'name': 'jack', 'password': '12345' },
+        { 'name': 'lucy', 'password': '12345' }
+    ],
+]
+        
+
+
+def add_to_team(json, team, person):
+    # list = json[team]
+    # list.append(person)
+
+
+
+    json[team].append(person)
+    return json 
+
+
+
+
+
+import pprint
+
+result = add_to_team(
+    json,
+    'men',
+    {
+        'name': 'sam',
+        'password': '00000'
+    }
+)
+
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(result)

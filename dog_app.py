@@ -16,6 +16,7 @@ cur = conn.cursor()
 
 def login(username, password):
     login_query = f"select * from owners where name='{username}' and password='{password}'"
+    print(login_query)
     cur.execute(login_query)
 
     user = cur.fetchone()
@@ -34,9 +35,18 @@ if asking != '1' and asking != '2':
 username = input("USERNAME: ")
 password = input("PASSWORD: ")
 
+invalid_words = ['update', 'delete', 'insert', 'select']
+for word in invalid_words:
+    if word in username or word in password:
+        print("can't hack me")
+        exit()
 
+
+
+# 12345'); update dogs set owner_id = 77 --
 if asking == "1":
     query = f"INSERT INTO owners (name, password) VALUES ('{username}', '{password}')"
+    print(query)
     cur.execute(query)
     conn.commit()
     user = login(username, password)
