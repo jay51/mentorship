@@ -1202,5 +1202,164 @@ result = add_to_team(
     }
 )
 
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(result)
+# pp = pprint.PrettyPrinter(indent=4)
+# pp.pprint(result)
+
+
+class Person():
+
+    def __init__(self, name, age, h, w):
+        self.name = name
+        self.age = age
+        self.height = h
+        self.wieght = w
+        self.haircolor = 'brown'
+
+
+    def print_info(self):
+        print(f"{self.name}")
+        print(f"{self.age}")
+        print(f"{self.height}")
+        print(f"{self.wieght}")
+        print(f"{self.haircolor}")
+
+
+
+# p1 = Person('jack', 28, 5.10, 160)
+
+# p2 = Person('nick', 27, 5.11, 170)
+
+# p2.print_info()
+
+# print('------------')
+
+# p1.print_info()
+
+
+
+class Stack():
+    def __init__(self, list = []):
+        self.list = list
+
+
+    def add(self, item):
+        self.list.append(item)
+        return item
+
+    def peak(self):
+        return self.list[len(self.list) - 1]
+
+    def pop(self):
+        return self.list.pop()
+        # del self.list[len(self.list) - 1]
+
+
+
+# stack = Stack([1,2,3])
+
+# stack.add(7)
+# stack.add(5)
+# stack.add(9)
+
+# print(stack.peak()) # 9
+
+# print(stack.pop()) # 9
+
+# print(stack.peak()) # 5
+
+
+
+# sign up
+#     username: jack
+#     password: kjfkadfhhdksajkdfkj
+
+
+# login
+#   username: jack
+#   password: kjfkadfhhdksajkdfkj
+
+32
+64
+
+# print(hash('passwor')) # kjfkadfhhdksajkdfkj
+
+# password => 32
+# hello => 32 
+
+
+def hash(data):
+
+    word = ''
+    for x in range(len(data)):
+        # print(data[x])
+        if x % 2 == 0:
+            pos = ord(data[x]) + 1
+            word = word + chr(pos)
+        else:
+            pos = ord(data[x]) - 1
+            word = word + chr(pos)
+
+
+    i = 122
+    v = 1
+    if len(word) < 32:
+        n = 32 - len(word)
+        for x in range(n):
+            word += chr(i)
+            # print(i, v, x)
+            i -= 1
+            v += v
+            if i - v < 32:
+                v = 1
+ 
+
+    return word
+
+# print(hash('hi'))
+# print(hash('hio'))
+# print(hash('hioooooooooo'))
+
+# hash password. create all letters exept found in password
+def hash(word):
+    original_result = []
+    #97-122
+    for x in word:
+        original_result.append(ord(x))
+    
+    final_result = ""
+    for i in range(65, 122):
+        if i not in original_result:
+            final_result += str(chr(i))
+
+    return final_result
+
+# print(hash('password'))
+
+
+def hash(data):
+    length = len(data)
+    first_char = ord(data[0])
+    mid_char = ord(data[length // 2])
+    last_char = ord(data[length -1])
+
+    sum = (length + first_char + mid_char + last_char) // 2 # 100
+
+    result = ''
+    for x in range(32):
+        result += chr(40 + sum)
+        sum -= 2
+
+    return result
+
+# print(hash('password'))
+
+
+# Dogs-dating:
+    # Dogs
+        # - name
+        # - age 
+        # - type
+
+{
+    'keys': 'values'
+}

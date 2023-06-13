@@ -4,15 +4,20 @@ import config
 
 # Connect to your postgres DB
 conn = psycopg2.connect(
-    dbname=config.dbname,
-    user=config.user,
-    password=config.password,
-    host=config.host,
-    port=config.port
+    dbname='work',
+    user='postgres',
+    password='password',
+    host='localhost',
+    port=5432
 )
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
+
+cur.execute('select * from customers')
+print(cur.fetchall())
+
+exit()
 
 def login(username, password):
     login_query = f"select * from owners where name='{username}' and password='{password}'"
